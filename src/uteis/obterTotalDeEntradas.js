@@ -1,9 +1,9 @@
 
 
 const obterTotalDeEntradas = (transacoes) => {
-  const valorEntradas = transacoes.reduce((acc, item) => {
+  const valorEntradas = transacoes.reduce((item) => {
     if (item.tipo === "entrada") {
-      return acc += item.valor;
+      return item.valor;
     }
   }, 0)
   if (valorEntradas === undefined) {
