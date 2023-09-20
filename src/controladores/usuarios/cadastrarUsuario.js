@@ -1,18 +1,11 @@
 const bcrypt = require("bcrypt");
 const { cadastrarUsuarioNoBanco } = require("../../repositorios/usuarios/cadastrarUsuarioNoBanco");
 const { verificaUsuarioValido } = require("../../repositorios/usuarios/verificaUsuario");
-const { verificaEmailValido } = require("../../uteis/verificaEmailValido");
 
 
 const cadastrarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
-  if (!nome || !email || !senha) {
-    return res.status(400).json({ mensagem: "Todos os campos são obrigatórios." });
-  }
-  const emailValido = verificaEmailValido(email);
-  if (!emailValido) {
-    return res.status(400).json({ mensagem: "E-mail passado não é um e-mail válido." });
-  }
+
   try {
     const usuarioIndisponivel = await verificaUsuarioValido(email);
     if (!usuarioIndisponivel) {

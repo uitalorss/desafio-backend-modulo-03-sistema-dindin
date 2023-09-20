@@ -12,10 +12,12 @@ const { editarTransacao } = require('../controladores/transacoes/editarTransacao
 const { obterExtratoDeTransacoes } = require('../controladores/transacoes/obterExtratoDeTransacoes');
 const { deletarTransacao } = require('../controladores/transacoes/deletarTransacao');
 const { detalharTransacao } = require('../controladores/transacoes/detalharTransacao');
+const { validacaoDaRequisicao } = require('../intermediarios/validacaoDaRequisicao');
+const cadastroUsuarioSchema = require('../schemas/cadastroUsuarioSchema');
 
 const rotas = express()
 
-rotas.post('/usuario', cadastrarUsuario);
+rotas.post('/usuario', validacaoDaRequisicao(cadastroUsuarioSchema), cadastrarUsuario);
 rotas.post('/login', logarUsuario);
 rotas.get('/categoria', autenticarUsuario, listarCategorias);
 rotas.post('/transacao', autenticarUsuario, cadastrarTransacao);
