@@ -1,13 +1,7 @@
 const Joi = require("joi");
 
 
-const cadastroUsuarioSchema = Joi.object({
-    nome: Joi.string()
-    .required()
-    .messages({
-        "string.base": "Favor informar um nome válido",
-        "any.required": "O campo nome é obrigatório"
-    }),
+const logarUsuarioSchema = Joi.object({
     email: Joi.string()
     .email()
     .required()
@@ -15,6 +9,7 @@ const cadastroUsuarioSchema = Joi.object({
         "any.required": "O campo email é obrigatório",
         "string.email": "Favor informar um email válido"
     }),
+
     senha: Joi.string()
     .min(5)
     .max(15)
@@ -26,4 +21,4 @@ const cadastroUsuarioSchema = Joi.object({
     })
 })
 
-module.exports = cadastroUsuarioSchema;
+module.exports = logarUsuarioSchema
