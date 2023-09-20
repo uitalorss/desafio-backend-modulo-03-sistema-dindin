@@ -15,17 +15,18 @@ const { detalharTransacao } = require('../controladores/transacoes/detalharTrans
 const { validacaoDaRequisicao } = require('../intermediarios/validacaoDaRequisicao');
 const logarUsuarioSchema = require('../schemas/logarUsuarioSchema');
 const usuarioSchema = require('../schemas/usuarioSchema');
+const transacaoSchema = require('../schemas/transacaoSchema');
 
 const rotas = express()
 
 rotas.post('/usuario', validacaoDaRequisicao(usuarioSchema), cadastrarUsuario);
 rotas.post('/login', validacaoDaRequisicao(logarUsuarioSchema), logarUsuario);
 rotas.get('/categoria', autenticarUsuario, listarCategorias);
-rotas.post('/transacao', autenticarUsuario, cadastrarTransacao);
+rotas.post('/transacao', validacaoDaRequisicao(transacaoSchema) ,autenticarUsuario, cadastrarTransacao);
 rotas.get('/transacao', autenticarUsuario, listarTransacoes);
 rotas.get('/usuario', autenticarUsuario, detalharUsuario);
 rotas.put('/usuario', autenticarUsuario, validacaoDaRequisicao(usuarioSchema), atualizarUsuario);
-rotas.put('/transacao/:id', autenticarUsuario, editarTransacao);
+rotas.put('/transacao/:id', validacaoDaRequisicao(transacaoSchema), autenticarUsuario, editarTransacao);
 rotas.get('/transacao/extrato', autenticarUsuario, obterExtratoDeTransacoes);
 rotas.delete('/transacao/:id', autenticarUsuario, deletarTransacao);
 rotas.get('/transacao/:id', autenticarUsuario, detalharTransacao);

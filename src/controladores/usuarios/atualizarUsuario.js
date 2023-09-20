@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const { verificaUsuarioValido } = require("../../repositorios/usuarios/verificaUsuario");
 const { alteracaoDeUsuarioNoBanco } = require("../../repositorios/usuarios/alteracaoDeUsuarioNoBanco");
 const { obterUsuario } = require("../../repositorios/usuarios/obterUsuario");
-const { verificaEmailValido } = require("../../uteis/verificaEmailValido");
 
 
 const atualizarUsuario = async (req, res) => {
@@ -12,13 +11,6 @@ const atualizarUsuario = async (req, res) => {
   const usuario = await obterUsuario(id);
 
   try {
-    if (!nome || !email || !senha) {
-      return res.status(400).json({ mensagem: "Todos os campos são obrigatórios." });
-    }
-    const emailValido = verificaEmailValido(email);
-    if (!emailValido) {
-      return res.status(400).json({ mensagem: "E-mail passado não é um e-mail válido." });
-    }
     if (email !== usuario.email) {
       const usuarioIndisponivel = await verificaUsuarioValido(email);
       if (usuarioIndisponivel) {
