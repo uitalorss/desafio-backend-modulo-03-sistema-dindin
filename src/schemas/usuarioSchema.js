@@ -5,6 +5,7 @@ const usuarioSchema = Joi.object({
     nome: Joi.string()
     .required()
     .messages({
+        "string.empty": "Campo nome está vazio",
         "string.base": "Favor informar um nome válido",
         "any.required": "O campo nome é obrigatório"
     }),
@@ -12,6 +13,7 @@ const usuarioSchema = Joi.object({
     .email()
     .required()
     .messages({
+        "string.empty": "Campo email está vazio",
         "any.required": "O campo email é obrigatório",
         "string.email": "Favor informar um email válido"
     }),
@@ -20,6 +22,7 @@ const usuarioSchema = Joi.object({
     .max(15)
     .required()
     .messages({
+        "string.empty": "Campo senha está vazio",
         "any.required": "O campo senha é obrigatório",
         "string.min": "A senha deve ter, pelo menos, 5 caracteres",
         "string.max": "A senha deve ter, no máximo, 15 caracteres"

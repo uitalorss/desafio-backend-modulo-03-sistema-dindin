@@ -6,6 +6,7 @@ const logarUsuarioSchema = Joi.object({
     .email()
     .required()
     .messages({
+        "string.empty": "Campo email está vazio",
         "any.required": "O campo email é obrigatório",
         "string.email": "Favor informar um email válido"
     }),
@@ -15,6 +16,7 @@ const logarUsuarioSchema = Joi.object({
     .max(15)
     .required()
     .messages({
+        "string.empty": "Campo senha está vazio",
         "any.required": "O campo senha é obrigatório",
         "string.min": "A senha deve ter, pelo menos, 5 caracteres",
         "string.max": "A senha deve ter, no máximo, 15 caracteres"
