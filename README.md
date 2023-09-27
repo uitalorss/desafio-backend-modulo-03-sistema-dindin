@@ -6,6 +6,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/uitalorss/desafio-backend-modulo-03-sistema-dindin?style=for-the-badge)
 
 <img src="./logo.png" alt="exemplo imagem">
+Projeto desenvolvido ao longo do Móduio 3 do Curso de Desenvolvimento de Software com Foco em Back-end da Cubos Academy.
 
 ### Ajustes e melhorias
 
