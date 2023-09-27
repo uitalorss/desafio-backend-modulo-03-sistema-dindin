@@ -53,7 +53,7 @@ yarn dev
 Deploy
 
 ```
-<link>
+https://dindin-api-azvd.onrender.com
 ```
 
 ## Endpoints
