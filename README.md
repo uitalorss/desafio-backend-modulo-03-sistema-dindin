@@ -19,7 +19,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 ## 🚀 Instalando o DindinAPI
 
-Para instalar o projeto, siga estas etapas:
+Para instalar o projeto, instale as dependências usando o comando abaxo:
 
 npm:
 
@@ -35,10 +35,24 @@ yarn add
 
 ## ☕ Usando DindinAPI
 
-Para usar DindinAPI, siga estas etapas:
+Para usar o DindinAPI, siga estas etapas:
+
+npm:
 
 ```
-<exemplo_de_uso>
+npm run dev
+```
+
+yarn:
+
+```
+yarn dev
+```
+
+Deploy
+
+```
+<link>
 ```
 
 ## Endpoints
@@ -281,6 +295,33 @@ Para usar DindinAPI, siga estas etapas:
 ```javascript
 // HTTP Status 200
 [];
+```
+
+`GET/transacao?filtro[]=categoria`
+
+- Esse serviço lista as transações filtrando por categoria que for passar pelo parâmetro de query
+
+#### **Exemplo de requisição**
+
+```javascript
+// GET /transacao?filtro[]=roupas
+// Sem conteúdo no corpo (body) da requisição
+```
+
+```javascript
+// HTTP Status 200
+[
+  {
+    id: 1,
+    tipo: "saida",
+    descricao: "Sapato amarelo",
+    valor: 15800,
+    data: "2022-03-23T15:35:00.000Z",
+    usuario_id: 5,
+    categoria_id: 4,
+    categoria_nome: "Roupas",
+  },
+];
 ```
 
 ### **Detalhar uma transação**
