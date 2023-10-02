@@ -176,7 +176,7 @@ https://dindin-api-azvd.onrender.com
 }
 ```
 
-### Editar usuário
+### Listar Categorias
 
 `GET/categoria`
 

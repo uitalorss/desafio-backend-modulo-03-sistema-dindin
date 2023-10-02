@@ -1,0 +1,273 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dindin API Documentation",
+    "description": "Projeto desenvolvido ao longo do Móduio 3 do Curso de Desenvolvimento de Software com Foco em Back-end da Cubos Academy.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Uítalo Souza",
+      "email": "uitalo.urss@gmail.com"
+    }
+  },
+  "paths": {
+    "/usuario": {
+      "post": {
+        "tags": ["Usuário"],
+        "summary": "Criação de usuário",
+        "description": "Esse serviço cadastra um novo usuário no sistema.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": "string"
+                }
+              },
+              "example": {
+                "nome": "José",
+                "email": "jose@email.com",
+                "senha": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": 1,
+                    "nome": "José",
+                    "email": "jose@email.com"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email já existente no banco de dados",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Já existe usuário cadastrado com o e-mail informado."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Usuário"],
+        "summary": "Detalhar usuário",
+        "description": "Esse serviço permite ao usuário visualizar os seus dados cadastrados",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "nome": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": 2,
+                    "nome": "José",
+                    "email": "jose@email.com"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Usuário"],
+        "summary": "Atualizar usuário",
+        "description": "Esse serviço permite ao usuário logado atualizar os seus dados cadastrados.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": "string"
+                }
+              },
+              "example": {
+                "nome": "José",
+                "email": "jose@email.com",
+                "senha": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Sucesso"
+          },
+          "400": {
+            "description": "Email já existente no banco de dados",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": " e-mail informado já está sendo utilizado por outro usuário."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Usuário"],
+        "summary": "Login de usuário",
+        "description": "Esse serviço permite a um usuário cadastrado logar no sistema para usufruir dos serviços disponíveis.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": "string"
+                }
+              },
+              "example": {
+                "email": "jose@email.com",
+                "senha": "123456"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário logado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "usuario": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "nome": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "usuario": {
+                      "id": 1,
+                      "nome": "José",
+                      "email": "jose@email.com"
+                    },
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIzMjQ5NjIxLCJleHAiOjE2MjMyNzg0MjF9.KLR9t7m_JQJfpuRv9_8H2-XJ92TSjKhGPxJXVfX6wBI"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "email ou senha inválidos",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "email e/ou senha inválidos."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categoria": {
+      "get": {
+        "tags": ["Categoria"],
+        "summary": "Listagem de categorias",
+        "description": "Esse serviço lista para o usuário todas as categorias disponíveis na API.",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "descricao": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": 1,
+                      "descricao": "Roupas"
+                    },
+                    {
+                      "id": 2,
+                      "descricao": "Mercado"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
