@@ -309,7 +309,7 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Sucesso",
             "content": {
               "application/json": {
                 "schema": {
@@ -426,6 +426,156 @@
                   "categoria_nome": "Salários"
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    "/transacao/{id}": {
+      "get": {
+        "tags": ["Transação"],
+        "summary": "Detalhar uma categoria",
+        "description": "Esse serviço recebe um identificador pela rota da aplicação e retorna a transação referente àquele identificador.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transacaoId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "identificador da transação"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "descricao": {
+                      "type": "string"
+                    },
+                    "valor": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "timestamp"
+                    },
+                    "usuario_id": {
+                      "type": "number"
+                    },
+                    "categoria_id": {
+                      "type": "number"
+                    },
+                    "categoria_nome": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": 3,
+                  "tipo": "entrada",
+                  "descricao": "Salário",
+                  "valor": 300000,
+                  "data": "2022-03-24T15:30:00.000Z",
+                  "usuario_id": 5,
+                  "categoria_id": 6,
+                  "categoria_nome": "Salários"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Transação não encontrada."
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["Transação"],
+        "summary": "Atualizar uma categoria",
+        "description": "Esse serviço recebe um identificador pela rota da aplicação e no seu corpo os itens são descritos para ser atualizados no servidor.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transacaoId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "identificador da transação"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tipo": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "valor": {
+                    "type": "number"
+                  },
+                  "data": {
+                    "type": "timestamp"
+                  },
+                  "categoria_id": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "tipo": "entrada",
+                  "descricao": "Salário",
+                  "valor": 300000,
+                  "data": "2022-03-24T15:30:00.000Z",
+                  "categoria_id": 6
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Transação não encontrada."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Campo não preenchido.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Esse campo é obrigatório."
+                }
+              }
             }
           }
         }
