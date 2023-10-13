@@ -508,7 +508,7 @@
       },
       "put": {
         "tags": ["Transação"],
-        "summary": "Atualizar uma categoria",
+        "summary": "Atualizar uma transação",
         "description": "Esse serviço recebe um identificador pela rota da aplicação e no seu corpo os itens são descritos para ser atualizados no servidor.",
         "parameters": [
           {
@@ -574,6 +574,37 @@
               "application/json": {
                 "example": {
                   "mensagem": "Esse campo é obrigatório."
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Transação"],
+        "summary": "Excluir uma transação",
+        "description": "Esse serviço recebe um identificador pela rota da aplicação e, caso o seu identificador seja válido, a transação é excluída.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transacaoId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "identificador da transação"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Transação não encontrada."
                 }
               }
             }
