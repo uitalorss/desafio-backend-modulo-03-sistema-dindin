@@ -15,7 +15,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Desenvolvimento do projeto
 - [x] Entrega do projeto
 - [x] Aplicação de melhorias (uso de Query Builder e validação dinâmica)
-- [ ] Construção da documentação em Swagger
+- [x] Construção da documentação em Swagger
 - [ ] Reconstrução do projeto com Typescript
 
 ## 🚀 Instalando o DindinAPI
