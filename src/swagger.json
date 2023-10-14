@@ -74,6 +74,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
+            }
           }
         }
       },
@@ -104,6 +114,16 @@
                     "nome": "José",
                     "email": "jose@email.com"
                   }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
                 }
               }
             }
@@ -147,6 +167,16 @@
               "application/json": {
                 "example": {
                   "mensagem": " e-mail informado já está sendo utilizado por outro usuário."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
                 }
               }
             }
@@ -225,6 +255,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
+            }
           }
         }
       }
@@ -262,6 +302,26 @@
                       "descricao": "Mercado"
                     }
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
                 }
               }
             }
@@ -355,11 +415,31 @@
             }
           },
           "400": {
-            "description": "",
+            "description": "Campo não preenchido.",
             "content": {
               "application/json": {
                 "example": {
                   "mensagem": "Todos os campos obrigatórios devem ser informados."
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
                 }
               }
             }
@@ -371,61 +451,83 @@
         "summary": "Listar transações",
         "description": "Esse serviço lista todas as transações de um usuário.",
         "responses": {
-          "description": "Sucesso",
-          "content": {
-            "application/json": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "tipo": {
-                    "type": "string"
-                  },
-                  "descricao": {
-                    "type": "string"
-                  },
-                  "valor": {
-                    "type": "number"
-                  },
-                  "data": {
-                    "type": "timestamp"
-                  },
-                  "usuario_id": {
-                    "type": "number"
-                  },
-                  "categoria_id": {
-                    "type": "number"
-                  },
-                  "categoria_nome": {
-                    "type": "string"
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "descricao": {
+                      "type": "string"
+                    },
+                    "valor": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "timestamp"
+                    },
+                    "usuario_id": {
+                      "type": "number"
+                    },
+                    "categoria_id": {
+                      "type": "number"
+                    },
+                    "categoria_nome": {
+                      "type": "string"
+                    }
                   }
-                }
-              },
-              "example": [
-                {
-                  "id": 1,
-                  "tipo": "saida",
-                  "descricao": "Sapato amarelo",
-                  "valor": 15800,
-                  "data": "2022-03-23T15:35:00.000Z",
-                  "usuario_id": 5,
-                  "categoria_id": 4,
-                  "categoria_nome": "Roupas"
                 },
-                {
-                  "id": 3,
-                  "tipo": "entrada",
-                  "descricao": "Salário",
-                  "valor": 300000,
-                  "data": "2022-03-24T15:30:00.000Z",
-                  "usuario_id": 5,
-                  "categoria_id": 6,
-                  "categoria_nome": "Salários"
+                "example": [
+                  {
+                    "id": 1,
+                    "tipo": "saida",
+                    "descricao": "Sapato amarelo",
+                    "valor": 15800,
+                    "data": "2022-03-23T15:35:00.000Z",
+                    "usuario_id": 5,
+                    "categoria_id": 4,
+                    "categoria_nome": "Roupas"
+                  },
+                  {
+                    "id": 3,
+                    "tipo": "entrada",
+                    "descricao": "Salário",
+                    "valor": 300000,
+                    "data": "2022-03-24T15:30:00.000Z",
+                    "usuario_id": 5,
+                    "categoria_id": 6,
+                    "categoria_nome": "Salários"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
                 }
-              ]
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
             }
           }
         }
@@ -503,6 +605,26 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
+            }
           }
         }
       },
@@ -577,6 +699,26 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
+            }
           }
         }
       },
@@ -605,6 +747,77 @@
               "application/json": {
                 "example": {
                   "mensagem": "Transação não encontrada."
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "transacao/extrato": {
+      "get": {
+        "tags": ["Transação"],
+        "summary": "Obtem um extrato de transações uma categoria",
+        "description": "Esse serviço lista de forma sintética os valores de transações de entrada e de saída",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "entradas": {
+                      "type": "number"
+                    },
+                    "saidas": {
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "entradas": 150000,
+                    "saidas": 120000
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Usuário não autenticado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário não autenticado"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Erro interno do servidor"
                 }
               }
             }
