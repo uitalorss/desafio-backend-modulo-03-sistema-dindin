@@ -450,6 +450,18 @@
         "tags": ["Transação"],
         "summary": "Listar transações",
         "description": "Esse serviço lista todas as transações de um usuário.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filtro",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Sucesso",
@@ -777,7 +789,7 @@
     "transacao/extrato": {
       "get": {
         "tags": ["Transação"],
-        "summary": "Obtem um extrato de transações uma categoria",
+        "summary": "Obtem um extrato de transações",
         "description": "Esse serviço lista de forma sintética os valores de transações de entrada e de saída",
         "responses": {
           "200": {
